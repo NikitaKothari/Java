@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;MachineLearning&apos; to &apos;machine.learning&apos;&#x0A;- Original project: &apos;Code&apos;&#x0A;- Original element: &apos;Code/src/MachineLearning&apos;&#x0A;- Renamed element: &apos;Code/src/machine.learning&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;MachineLearning&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;MachineLearning" name="machine.learning" qualified="false" references="true" stamp="1504192927575" textual="false" version="1.0"/>
+</session>

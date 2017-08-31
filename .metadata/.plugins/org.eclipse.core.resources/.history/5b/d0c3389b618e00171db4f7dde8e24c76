@@ -1,0 +1,40 @@
+package machine.learning;
+
+public class GradientDescent {
+
+	public static void calculateFunction(int[] x, int[] y, int[] h, float theta0, float theta1) {
+
+	}
+
+	public static int findError(int[] x, int[] y, int n) {
+		return 0;
+	}
+
+	public static int FindTemp0(int[] x, int[] y, int n, float theta0) {
+		return 0;
+	}
+
+	public static int FindTemp1(int[] x, int[] y, int n, float theta1) {
+		return 0;
+	}
+
+	public static void main(String[] args) {
+		int[] x = { 3, 1, 0, 4 };
+		int[] y = { 2, 2, 1, 3 };
+		int n = x.length;
+
+		int[] h = new int[x.length];
+
+		float theta0 = 0, theta1 = 1;
+
+		calculateFunction(x, y, h, theta0, theta1);
+		float error = findError(x, y, n);
+		float temp0 = FindTemp0(x, y, n, theta0);
+		float temp1 = FindTemp1(x, y, n, theta1);
+
+		System.out.println("Error is " + error);
+		System.out.println("temp0 is " + temp0);
+
+	}
+
+}

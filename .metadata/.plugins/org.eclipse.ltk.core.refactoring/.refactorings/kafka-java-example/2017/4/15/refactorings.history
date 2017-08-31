@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;homework3/src/main/java/homework3&apos;&#x0A;- Original project: &apos;kafka-java-example&apos;&#x0A;- Destination element: &apos;homework3/src/main/java/homework3&apos;&#x0A;- Original elements:&#x0A;     com.howtoprogram.kafka.ConsumerTest.java&#x0A;     com.howtoprogram.kafka.ProducerTest.java" description="Copy compilation units" destination="=homework3/src\/main\/java&lt;homework3" element1="/src\/main\/java&lt;com.howtoprogram.kafka{ConsumerTest.java" element2="/src\/main\/java&lt;com.howtoprogram.kafka{ProducerTest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1491928991676" units="2" version="1.0"/>
+</session>

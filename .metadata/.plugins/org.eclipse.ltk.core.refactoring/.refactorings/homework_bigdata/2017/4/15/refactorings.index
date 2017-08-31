@@ -1,0 +1,9 @@
+1492215685362	Rename type 'ReadTweets'
+1492215710515	Rename type 'TwitterKafkaProducer'
+1492215972818	Rename local variable 'msgRead'
+1492216243759	Rename local variable 'tf'
+1492216431406	Delete element
+1492217624405	Rename local variable 'tt'
+1492218416993	Delete element
+1492218671247	Rename type 'Main'
+1492288862992	Rename type 'TweetsConsumer'

@@ -1,0 +1,75 @@
+package Companies;
+
+import java.util.HashMap;
+
+public class Fidessa {
+
+	public static char findFirstChar(String str) {
+		HashMap<Character, Boolean> hash = new HashMap<>();
+
+		for (int i = 0; i < str.length(); i++) {
+			if (hash.containsKey(str.charAt(i)))
+				hash.put(str.charAt(i), true);
+			else
+				hash.put(str.charAt(i), false);
+		}
+		for (int i = 0; i < str.length(); i++) {
+			if (hash.get(str.charAt(i)) == true) {
+				return str.charAt(i);
+			}
+		}
+		return '0';
+	}
+
+	public static String reverseVowels(String s) {
+		if (s == null || s.isEmpty() || s.length() == 0)
+			return s;
+		int i = 0, j = 0, len = s.length();
+		String vow = "aeiou";
+		char[] charArray = s.toCharArray();
+		while (i < len) {
+			if (vow.contains("" + charArray[i])) {
+				for (j = i + 1; j < len; j++) {
+					if (vow.contains("" + charArray[i])) {
+						char temp = charArray[i];
+						charArray[i] = charArray[j];
+						charArray[j] = temp;
+						i = j;
+						break;
+					}
+				}
+				if (j == len)
+					break;
+			} else
+				i++;
+		}
+		return new String(charArray);
+	}
+
+	public static String findTraingle(int side1, int side2, int side3) {
+		if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1) {
+			if (side1 == side2 && side2 == side3) {
+				return ("Equilateral Triangle");
+			} else if (side1 == side2 || side2 == side3 || side1 == side3) {
+				return ("Isosceles Triangle");
+			} else if (side1 != side2 && side2 != side3) {
+				return ("Scalene Triangle");
+			}
+		}
+		return ("Triangle is not possible");
+	}
+
+	public static void main(String[] args) {
+
+		/*
+		 * Scanner s = new Scanner(System.in);
+		 * System.out.println(findFirstChar(s.next())); int count = s.nextInt();
+		 * for (int i = 0; i < count; i++) { int a = Integer.parseInt(s.next());
+		 * int b = Integer.parseInt(s.next()); int c =
+		 * Integer.parseInt(s.next()); System.out.println(a + b + c); }
+		 */
+
+		System.out.println(reverseVowels("hello"));
+	}
+
+}

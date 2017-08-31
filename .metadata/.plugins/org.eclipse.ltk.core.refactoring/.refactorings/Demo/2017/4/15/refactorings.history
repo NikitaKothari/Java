@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;homework_bigdata/src/main/java/producer&apos;&#x0A;- Original project: &apos;Demo&apos;&#x0A;- Destination element: &apos;homework_bigdata/src/main/java/producer&apos;&#x0A;- Original elements:&#x0A;     ReadTweets.java&#x0A;     TwitterKafkaProducer.java" description="Copy compilation units" destination="=homework_bigdata/src\/main\/java&lt;producer" element1="/src\/main\/java&lt;{ReadTweets.java" element2="/src\/main\/java&lt;{TwitterKafkaProducer.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1492215444523" units="2" version="1.0"/>
+</session>

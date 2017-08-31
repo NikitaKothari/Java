@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;ctci.practice.LinkedListSol.isPalindrome(...)&apos; to &apos;isPalindromeRecurse&apos;&#x0A;- Original project: &apos;Code&apos;&#x0A;- Original element: &apos;ctci.practice.LinkedListSol.isPalindrome(...)&apos;&#x0A;- Renamed element: &apos;ctci.practice.LinkedListSol.isPalindromeRecurse(...)&apos;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;isPalindrome&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;ctci.practice{LinkedListSol.java[LinkedListSol~isPalindrome~QLinkedList\&lt;QInteger;&gt;;~I" name="isPalindromeRecurse" references="true" stamp="1497150176000" version="1.0"/>
+</session>

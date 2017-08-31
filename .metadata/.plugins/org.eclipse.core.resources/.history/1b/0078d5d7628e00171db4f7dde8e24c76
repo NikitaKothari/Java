@@ -1,0 +1,61 @@
+package machine.learning;
+
+public class GradientDescent {
+
+	public static void calculateFunction(int[] x, float[] h, int n, float theta0, float theta1) {
+		for (int i = 0; i < n; i++) {
+			h[i] = theta0 + theta1 * x[i];
+		}
+	}
+
+	public static float findError(float[] h, int[] y, int n) {
+		float sum = 0;
+		for (int i = 0; i < n; i++) {
+			sum = sum + ((h[i] - y[i]) * (h[i] - y[i]));
+		}
+		return sum / (2 * n);
+	}
+
+	public static float FindTemp0(float[] h, int[] y, int n, float theta0) {
+		float sum = 0;
+		for (int i = 0; i < n; i++) {
+			sum = sum + (h[i] - y[i]);
+		}
+		return theta0 - sum / n;
+	}
+
+	public static float FindTemp1(float[] h, int[] x, int[] y, int n, float theta1) {
+		float sum = 0;
+		for (int i = 0; i < n; i++) {
+			sum = sum + ((h[i] - y[i]) * x[i]);
+		}
+		return theta1 - sum / n;
+	}
+
+	public static void main(String[] args) {
+		int[] x = { 3, 1, 0, 4 };
+		int[] y = { 2, 2, 1, 3 };
+		int n = x.length;
+
+		float[] h = new float[x.length];
+
+		float error, temp0, temp1;
+
+		float theta0 = 0, theta1 = 1;
+		for (int i = 0; i < 5; i++) {
+			System.out.println("_____________________" + (i + 1) + "_______________________");
+			calculateFunction(x, h, n, theta0, theta1);
+			error = findError(h, y, n);
+			temp0 = FindTemp0(h, y, n, theta0);
+			temp1 = FindTemp1(h, x, y, n, theta1);
+
+			System.out.println("Error is " + error);
+			System.out.println("temp0 is " + temp0);
+			System.out.println("temp1 is " + temp1);
+
+			theta0 = temp0;
+			theta1 = temp1;
+			System.out.println("_____________________________________________");
+		}
+	}
+}

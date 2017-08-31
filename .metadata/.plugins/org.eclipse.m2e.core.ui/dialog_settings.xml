@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="com.utd.bigdata"/>
+			<item value="homework3.bigdata"/>
+			<item value="com.mycompany.spark"/>
+			<item value="com.devinline.spark"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="homework_bigdata"/>
+			<item value="homework3"/>
+			<item value="my-app"/>
+			<item value="SparkSample"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="/Users/nikitakothari/Documents/Coding/Java/"/>
+			<item value="/Users/nikitakothari/Downloads/corenlp-examples-master"/>
+			<item value="/Users/nikitakothari/Downloads/stanford-ner-master"/>
+			<item value="/Users/nikitakothari/Downloads/producer_consumer/Web_Scrapper"/>
+			<item value="/Users/nikitakothari/Downloads/producer_consumer"/>
+			<item value="/Users/nikitakothari/Downloads/pres-spark-demo-master"/>
+			<item value="/Users/nikitakothari/Downloads/SentimentAnalysis"/>
+			<item value="/Users/nikitakothari/Downloads/code_backup_big_data_v1.0"/>
+			<item value="/Users/nikitakothari/Downloads/es-demo"/>
+			<item value="/Users/nikitakothari/Downloads/kafka-connect-elasticsearch-master"/>
+			<item value="/Users/nikitakothari/Downloads/day20-stanford-sentiment-analysis-demo-master copy"/>
+			<item value="/Users/nikitakothari/Downloads/day20-stanford-sentiment-analysis-demo-master"/>
+			<item value="/Users/nikitakothari/Downloads/Jest-master/jest"/>
+			<item value="/Users/nikitakothari/Downloads/elasticsearch.demo-master"/>
+			<item value="/Users/nikitakothari/Downloads/twitter-stream-master"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="/Users/nikitakothari/Documents/MyDocuments/Coding/Scala"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

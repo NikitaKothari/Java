@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Users/nikitakothari/Documents/Coding/Java"/>
+			<item value="/Users/nikitakothari/Documents/Coding/Java/CodingTest"/>
+			<item value="/Users/nikitakothari/Documents/MyDocuments/UTD/SEM2/BigData/Homework1/BigData"/>
+			<item value="/Users/nikitakothari/Documents/MyDocuments/Coding/Java/CodingTest"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory"/>
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.jst.j2ee.internal"/>
+			<item value="org.eclipse.wst.jsdt.ui.java"/>
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="344" key="DIALOG_X_ORIGIN"/>
+		<item value="228" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="false" key="FilterByLocation"/>
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode path=&quot;/homework_bigdata/src/main/java/consumer/KafkaTwitterConsumer.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/homework3/src/main/java/homework3/ElasticSearchConnection.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/homework_bigdata/src/main/java/consumer/Tweet.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/homework_bigdata/src/main/java/producer/KafkaTwitterProducer.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Code/src/templete/custom/Graph.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Code/src/templete/custom/GenericQueue.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Code/src/templete/custom/TreeTemplate.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;infoNode path=&quot;/Code/src/ctci/practice/LinkedListSol.java&quot; type=&quot;1&quot;/&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="false" key="ShowDerived"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="340" key="DIALOG_X_ORIGIN"/>
+			<item value="67" key="DIALOG_Y_ORIGIN"/>
+		</section>
+	</section>
+</section>
