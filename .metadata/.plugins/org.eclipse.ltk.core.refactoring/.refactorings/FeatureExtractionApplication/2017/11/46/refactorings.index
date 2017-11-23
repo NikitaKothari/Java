@@ -1,0 +1,20 @@
+1510797633003	Delete element
+1510802001764	Delete element
+1510804211332	Delete element
+1510804221448	Delete element
+1510804256794	Delete element
+1510804262279	Delete element
+1510804272209	Delete element
+1510804283929	Delete element
+1510804289988	Delete element
+1510804294767	Delete element
+1510804324055	Rename type 'PanoramaImage'
+1510804609203	Delete elements
+1510806795555	Rename type 'ImageFormatUtil'
+1510809334653	Rename field 'goodMatches'
+1510841351930	Rename type 'FeatureExtractionImage'
+1510841389409	Rename type 'FeatureDescriptionImage'
+1510844168850	Rename method 'getGoodMatches'
+1510844246115	Rename type 'ImageUtil'
+1510844289171	Rename method 'getKeypointsFromGoodMatch'
+1510844382407	Rename local variable 'goodMatchesList'

@@ -1,5 +1,7 @@
 package templete.custom;
 
+import java.util.Stack;
+
 public class LinkedList<E> {
 	public E val;
 	public LinkedList<E> next;
@@ -119,6 +121,31 @@ public class LinkedList<E> {
 			list = list.next;
 		}
 		return head;
+	}
+
+	public static void printrev(LinkedList<Integer> list) {
+		if (list.next != null)
+			printrev(list.next);
+		System.out.println(list.val);
+	}
+
+	public static void printrevStack(LinkedList<Integer> list) {
+		Stack<Integer> stack = new Stack<>();
+		while (list != null) {
+			stack.push(list.val);
+			list = list.next;
+		}
+		while (!stack.isEmpty()) {
+			System.out.println(stack.pop());
+		}
+	}
+
+	public static void main(String[] args) {
+		LinkedList<Integer> list = new LinkedList<Integer>(5);
+		list.next = new LinkedList<Integer>(7);
+		list.next.next = new LinkedList<Integer>(9);
+		list.next.next.next = new LinkedList<Integer>(11);
+		printrevStack(list);
 	}
 
 }

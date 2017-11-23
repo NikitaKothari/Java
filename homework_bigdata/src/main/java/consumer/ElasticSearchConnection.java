@@ -9,11 +9,13 @@ import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 public class ElasticSearchConnection {
 	
+	@SuppressWarnings("deprecation")
 	public static void createMapping() {
 		Settings settings = Settings.builder().put("cluster.name", "elasticsearch").put("client.transport.sniff", true)
 				.build();
 
 		try {
+			@SuppressWarnings("resource")
 			TransportClient client = new PreBuiltTransportClient(settings)
 					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300))
 					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("localhost"), 9300));

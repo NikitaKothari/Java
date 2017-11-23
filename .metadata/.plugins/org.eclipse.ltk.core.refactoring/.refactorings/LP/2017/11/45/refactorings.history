@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;lp4.cs6301.g32.BellmanFordHops&apos; to &apos;BellmanFordLimit&apos;&#x0A;- Original project: &apos;LP&apos;&#x0A;- Original element: &apos;lp4.cs6301.g32.BellmanFordHops&apos;&#x0A;- Renamed element: &apos;lp4.cs6301.g32.BellmanFordLimit&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;BellmanFordHops&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;lp4.cs6301.g32{BellmanFordHops.java[BellmanFordHops" matchStrategy="1" name="BellmanFordLimit" qualified="false" references="true" similarDeclarations="false" stamp="1510103423112" textual="false" version="1.0"/>
+</session>

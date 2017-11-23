@@ -3,6 +3,7 @@ import java.io.Serializable;
 
 public class Tweet implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private String location;
 	private String sentiment;
 	private String text;

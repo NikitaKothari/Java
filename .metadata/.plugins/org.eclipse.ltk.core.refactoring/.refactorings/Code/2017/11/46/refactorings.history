@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;BFS.java&apos; to &apos;LP/src/lp7.cs6301.g32&apos;&#x0A;- Original project: &apos;Code&apos;&#x0A;- Destination element: &apos;LP/src/lp7.cs6301.g32&apos;&#x0A;- Original element: &apos;implementation.algorithm.balaji.BFS.java&apos;" description="Copy compilation unit" destination="=LP/src&lt;lp7.cs6301.g32" element1="/src&lt;implementation.algorithm.balaji{BFS.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1510945369487" units="1" version="1.0"/>
+</session>

@@ -9,9 +9,10 @@ import edu.stanford.nlp.rnn.RNNCoreAnnotations;
 import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.util.CoreMap;
-import javassist.SerialVersionUID;
 
 public class SentimentAnalyzer implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	public String findSentiment(String line) {
 		Properties props = new Properties();
 		props.setProperty("annotators", "tokenize, ssplit, parse, sentiment");
@@ -22,6 +23,7 @@ public class SentimentAnalyzer implements Serializable {
 			Annotation annotation = pipeline.process(line);
 			for (CoreMap sentence : annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
 				Tree tree = sentence.get(SentimentCoreAnnotations.AnnotatedTree.class);
+				System.out.println(tree);
 				int sentiment = RNNCoreAnnotations.getPredictedClass(tree);
 				String partText = sentence.toString();
 				if (partText.length() > longest) {
@@ -41,5 +43,11 @@ public class SentimentAnalyzer implements Serializable {
 	    	mainSentimentStr = "Sad";
 	    }
 		return mainSentimentStr;
+	}
+	
+	
+	public static void main(String[] args) {
+		SentimentAnalyzer sentimentAnalyzer = new SentimentAnalyzer();
+		System.out.println(sentimentAnalyzer.findSentiment("I am happy because I have job"));
 	}
 }

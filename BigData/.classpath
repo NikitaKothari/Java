@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="commons-cli-1.2.jar"/>
+	<classpathentry kind="lib" path="hadoop-common-2.6.0.jar"/>
+	<classpathentry kind="lib" path="hadoop-mapreduce-client-core-2.6.0.jar"/>
+	<classpathentry kind="lib" path="ganymed-ssh2-build210.jar"/>
+	<classpathentry kind="lib" path="commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Komal Mukadam/Downloads/commons-logging-1.2/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Komal Mukadam/Downloads/commons-logging-1.2/commons-logging-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Komal Mukadam/Downloads/com.google.guava_1.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Komal Mukadam/Downloads/commons-collections-3.2.2-bin/commons-collections-3.2.2/commons-collections-3.2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Komal Mukadam/Downloads/commons-collections-3.2.2-bin/commons-collections-3.2.2/commons-collections-3.2.2-javadoc.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

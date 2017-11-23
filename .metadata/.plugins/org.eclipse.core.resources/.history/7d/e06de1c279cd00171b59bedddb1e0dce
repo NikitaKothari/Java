@@ -1,0 +1,683 @@
+package ctci.practice;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Stack;
+
+import sorting.searching.Utilities;
+
+class Node {
+	int value;
+	Node leftchild;
+	Node rightchild;
+}
+
+class ReturnInfo {
+	ReturnInfo() {
+		maxpathlen = 0;
+		maxheight = 0;
+		ArrayList<Node> pathList = new ArrayList<Node>();
+		ArrayList<Node> heightList = new ArrayList<Node>();
+	}
+
+	int maxpathlen; // current max path
+	int maxheight; // current max height
+	ArrayList<Node> pathList;
+	ArrayList<Node> heightList;
+}
+
+public class Test {
+
+	public ReturnInfo getMaxPath(Node n) {
+		// Base case
+		if (n == null)
+			return new ReturnInfo();
+		// This is a bottom up recursion. Info will flow from leaves to root.
+		// So first recurse and then do the work at this node level
+		// Recurse left & right
+		ReturnInfo leftReturnInfo = getMaxPath(n.leftchild);
+		ReturnInfo rightReturnInfo = getMaxPath(n.rightchild);
+
+		// Do work in this recursion or for this node
+		ReturnInfo retInfo = new ReturnInfo();
+
+		// Update all 4 parameters of returninfo and we are done
+
+		retInfo.maxheight = Math.max(leftReturnInfo.maxheight, rightReturnInfo.maxheight) + 1;
+		if (leftReturnInfo.maxheight > rightReturnInfo.maxheight)
+			retInfo.heightList = leftReturnInfo.heightList;
+		else
+			retInfo.heightList = rightReturnInfo.heightList;
+
+		retInfo.maxpathlen = Math.max(Math.max(leftReturnInfo.maxpathlen, rightReturnInfo.maxpathlen),
+				leftReturnInfo.maxheight + rightReturnInfo.maxheight + 1);
+
+		if (leftReturnInfo.maxpathlen > rightReturnInfo.maxpathlen
+				&& leftReturnInfo.maxpathlen > (leftReturnInfo.maxheight + rightReturnInfo.maxheight + 1))
+			retInfo.pathList.addAll(leftReturnInfo.pathList);
+		else if (rightReturnInfo.maxpathlen > leftReturnInfo.maxpathlen
+				&& rightReturnInfo.maxpathlen > (leftReturnInfo.maxheight + rightReturnInfo.maxheight + 1))
+			retInfo.pathList.addAll(rightReturnInfo.pathList);
+		else {
+			retInfo.pathList.addAll(leftReturnInfo.pathList);
+			retInfo.pathList.addAll(rightReturnInfo.pathList);
+		}
+
+		return retInfo;// We are done
+
+	}
+
+	public int arrayPairSum(int[] nums) {
+		PriorityQueue<Integer> queue = new PriorityQueue<>();
+		int result = 0;
+		for (int i = 0; i < nums.length; i++) {
+			queue.offer(nums[i]);
+		}
+		while (!queue.isEmpty()) {
+			result += queue.poll();
+			queue.poll();
+		}
+		return result;
+	}
+
+	public static boolean isValid(String s) {
+		Stack<Character> stack = new Stack<>();
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == '{' || s.charAt(i) == '[' || s.charAt(i) == '(')
+				stack.push(s.charAt(i));
+			else {
+				if (stack.isEmpty())
+					return false;
+				char c = stack.pop();
+				if ((c == '(' && s.charAt(i) != ')') || (c == '{' && s.charAt(i) != '}')
+						|| (c == '{' && s.charAt(i) != '}'))
+					return false;
+			}
+
+		}
+		return stack.isEmpty();
+	}
+
+	static int reductionCost(int[] num) {
+		PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+		for (int i : num)
+			priorityQueue.add(i);
+		int sum = priorityQueue.poll();
+		int cost = 0;
+		while (!priorityQueue.isEmpty()) {
+			int currentElement = priorityQueue.poll();
+			if (currentElement < sum) {
+				priorityQueue.add(sum);
+				sum = currentElement;
+			} else {
+				sum += currentElement;
+				cost += sum;
+				continue;
+			}
+
+			sum += priorityQueue.poll();
+			cost += sum;
+		}
+
+		return cost;
+	}
+
+	static String rollingString(String s, String[] operations) {
+		char[] chararray = s.toCharArray();
+		for (String operation : operations) {
+			String[] op = operation.split(" ");
+			int i = Integer.parseInt(op[0]);
+			int j = Integer.parseInt(op[1]);
+			if (op[2].equals('L')) {
+
+				for (int k = i; k <= j; k++) {
+					int before = chararray[k] - 'a';
+					int after = (before - 1) % 26;
+					chararray[k] = (char) ('a' + (char) after);
+				}
+
+			} else if (op[2].equals('R')) {
+
+				for (int k = i; k <= j; k++) {
+					int before = chararray[k] - 'a';
+					int after = (before + 1) % 26;
+					chararray[k] = (char) ('a' + (char) after);
+				}
+			}
+		}
+		return String.valueOf(chararray);
+	}
+
+	public class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
+
+		TreeNode(int x) {
+			val = x;
+		}
+	}
+
+	public TreeNode inorderSuccessorHelper(TreeNode root, TreeNode p) {
+		if (root == null || p == null)
+			return null;
+
+		TreeNode next = null;
+		TreeNode c = root;
+
+		while (c != null && p.val != c.val) {
+			if (c.val > p.val) {
+				next = c;
+				c = c.left;
+			} else {
+				c = c.right;
+			}
+		}
+
+		if (c == null)
+			return null;
+		if (c.right == null)
+			return next;
+		c = c.right;
+		while (c.left != null)
+			c = c.left;
+		return c;
+
+	}
+
+	public static void permute(String s) {
+		char[] charArray = s.toCharArray();
+		permute(charArray, 0, charArray.length - 1);
+	}
+
+	private static void permute(char[] charArray, int i, int j) {
+
+		if (i == j)
+			System.out.println(new String(charArray));
+		else {
+			for (int k = i; k <= j; k++) {
+				swap(charArray, i, k);
+				permute(charArray, i + 1, j);
+				swap(charArray, i, k);
+			}
+		}
+	}
+
+	public static void swap(char[] c, int i, int j) {
+		char temp = c[i];
+		c[i] = c[j];
+		c[j] = temp;
+	}
+
+	public static void swap(int[] c, int i, int j) {
+		int temp = c[i];
+		c[i] = c[j];
+		c[j] = temp;
+	}
+
+	public static List<List<Integer>> permute(int[] nums) {
+		List<List<Integer>> l = new ArrayList<>();
+		permute(nums, 0, nums.length - 1, l);
+		return l;
+
+	}
+
+	private static void permute(int[] nums, int low, int high, List<List<Integer>> l) {
+		if (low == high) {
+			Utilities.print(nums);
+			List<Integer> arrList = new ArrayList<>();
+			for (int i : nums) {
+				arrList.add(i);
+			}
+			l.add(arrList);
+		}
+		for (int i = low; i <= high; i++) {
+			swap(nums, i, low);
+			permute(nums, low + 1, high, l);
+			swap(nums, i, low);
+		}
+	}
+
+	public static boolean canJump(int[] nums) {
+		boolean res = false;
+		int i = nums[0];
+		while (i < nums.length) {
+			System.out.println(i);
+			if (i < nums.length && nums[i] == 0)
+				return false;
+			i += nums[i];
+		}
+		return true;
+	}
+
+	public int numIslands(char[][] grid) {
+		int n = grid.length;
+		if (n == 0)
+			return 0;
+		int m = grid[0].length;
+		int count = 0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				if (grid[i][j] == '1') {
+					masking(grid, i, j, n, m);
+					++count;
+				}
+			}
+		}
+		return count;
+	}
+
+	private void masking(char[][] grid, int i, int j, int n, int m) {
+		if (i < 0 || j < 0 || i >= n || j >= m || grid[i][j] != '1')
+			return;
+		grid[i][j] = '0';
+		masking(grid, i + 1, j, n, m);
+		masking(grid, i - 1, j, n, m);
+		masking(grid, i, j + 1, n, m);
+		masking(grid, i, j - 1, n, m);
+	}
+
+	public void solve(char[][] board) {
+		int n = board.length;
+		if (n == 0)
+			return;
+		int m = board[0].length;
+
+	}
+
+	public List<Integer> spiralOrder(int[][] matrix) {
+
+		List<Integer> res = new ArrayList<>();
+
+		int rowBegin = 0;
+		int rowEnd = matrix.length - 1;
+		if (rowEnd == 0)
+			return res;
+		int colBegin = 0;
+		int colEnd = matrix.length - 1;
+
+		while (rowBegin <= rowEnd && colBegin <= colEnd) {
+			for (int i = colBegin; i <= colEnd; i++) {
+				res.add(matrix[rowBegin][i]);
+			}
+			rowBegin++;
+			for (int i = rowBegin; i <= rowEnd; i++) {
+				res.add(matrix[i][colEnd]);
+			}
+			colEnd--;
+
+			if (rowBegin <= rowEnd) {
+				for (int i = colEnd; i >= colBegin; i--) {
+					res.add(matrix[rowEnd][i]);
+				}
+			}
+			rowEnd--;
+			if (colBegin <= colEnd) {
+				for (int i = rowEnd; i >= rowBegin; i++) {
+					res.add(matrix[i][colBegin]);
+				}
+			}
+			colBegin++;
+		}
+		return res;
+	}
+
+	public static void printmat(int[][] mat) {
+		int n = mat.length;
+		if (n == 0)
+			return;
+		int m = mat[0].length;
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				System.out.print(mat[i][j] + " ");
+			}
+			System.out.println();
+		}
+
+	}
+
+	TreeNode findRoot(TreeNode s, int val) {
+		if (s == null)
+			return null;
+		if (s.val == val)
+			return s;
+		else if (s.val > val)
+			return findRoot(s.left, val);
+		return findRoot(s.right, val);
+	}
+
+	boolean validate(TreeNode s, TreeNode t) {
+		if (s == null && t == null)
+			return true;
+		if (t == null || s == null)
+			return false;
+		if (s.val != t.val)
+			return false;
+		return validate(s.left, t.left) && validate(s.right, t.right);
+	}
+
+	public boolean isSubtree(TreeNode s, TreeNode t) {
+		TreeNode subroot = findRoot(s, t.val);
+		return validate(s, subroot);
+	}
+
+	public static void transpose(int[][] mat) {
+		int n = mat.length;
+		if (n == 0)
+			return;
+		int m = mat[0].length;
+
+		int[][] res = new int[m][n];
+
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				res[j][i] = mat[i][j];
+			}
+		}
+		printmat(res);
+	}
+
+	public static void rotateMatrix(int[][] mat) {
+		int n = mat.length;
+		if (n == 0)
+			return;
+		int m = mat[0].length;
+		if (n != m)
+			return;
+
+		for (int layer = 0; layer < n / 2; layer++) {
+			int first = layer;
+			int last = n - 1 - layer;
+			for (int i = first; i < last; i++) {
+				int offset = i;
+				int temp = mat[first][i];
+				mat[first][i] = mat[last - offset][first];
+				mat[last - offset][first] = mat[last][last - offset];
+				mat[last][last - offset] = mat[i][last];
+				mat[i][last] = temp;
+			}
+		}
+		printmat(mat);
+	}
+
+	public static int findNumberOfLIS(int[] nums) {
+		int[] l = new int[nums.length];
+		int[] cnt = new int[nums.length];
+		int maxlen = 0;
+		int res = 0;
+		for (int i = 0; i < nums.length; i++) {
+			l[i] = 1;
+			cnt[i] = 1;
+			for (int j = 0; j < i; j++) {
+				if (nums[i] > nums[j]) {
+					if (l[i] == l[j] + 1)
+						cnt[i] += cnt[j];
+					else if (l[i] < l[j] + 1) {
+						l[i] = l[j] + 1;
+						cnt[i] = cnt[j];
+					}
+				}
+			}
+			if (maxlen == nums.length)
+				res += cnt[i];
+			if (maxlen < l[i]) {
+				maxlen = l[i];
+				res = cnt[i];
+			}
+		}
+
+		for (int i = 0; i < nums.length; i++) {
+			System.out.println(cnt[i]);
+		}
+		return res;
+	}
+
+	public static int combinationSum4(int[] nums, int target) {
+		if (nums == null || nums.length == 0)
+			return 0;
+
+		int[] dp = new int[target + 1];
+
+		dp[0] = 1;
+
+		for (int i = 0; i < target; i++) {
+			for (int num : nums) {
+				if (i + num <= target) {
+					dp[i + num] += dp[i];
+				}
+			}
+		}
+
+		return dp[target];
+	}
+
+	public static int findMaxLength(int[] nums) {
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] == 0)
+				nums[i] = -1;
+		}
+
+		Map<Integer, Integer> sumToIndex = new HashMap<>();
+		sumToIndex.put(0, -1);
+		int sum = 0, max = 0;
+
+		for (int i = 0; i < nums.length; i++) {
+			sum += nums[i];
+			if (sumToIndex.containsKey(sum)) {
+				max = Math.max(max, i - sumToIndex.get(sum));
+			} else {
+				sumToIndex.put(sum, i);
+			}
+		}
+
+		return max;
+	}
+
+	public int maxSubArrayLen(int[] nums, int k) {
+		if (nums == null || nums.length == 0)
+			return 0;
+		for (int i = 1; i < nums.length; i++)
+			nums[i] += nums[i - 1];
+		Map<Integer, Integer> map = new HashMap<>();
+		map.put(0, -1); // add this fake entry to make sum from 0 to j
+						// consistent
+		int max = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (map.containsKey(nums[i] - k)) {
+				max = Math.max(max, i - map.get(nums[i] - k));
+			} else {
+				map.put(nums[i], i);
+			}
+		}
+		return max;
+	}
+
+	public List<List<Integer>> threeSum(int[] nums) {
+		if (nums == null || nums.length == 0)
+			return null;
+		List<List<Integer>> res = new ArrayList<>();
+
+		int n = nums.length;
+		Arrays.sort(nums);
+		for (int i = 0; i < n - 2; i++) {
+			if (i == 0 || nums[i] > nums[i - 1]) {
+				int j = i + 1;
+				int k = n - 1;
+				while (j < k) {
+					if (nums[i] + nums[j] + nums[k] == 0) {
+						List<Integer> list = new ArrayList<>();
+						list.add(nums[i]);
+						list.add(nums[j]);
+						list.add(nums[k]);
+						res.add(list);
+						j++;
+						k--;
+
+						while (j < k && nums[j] == nums[j - 1])
+							j++;
+						while (j < k && nums[k] == nums[k + 1])
+							k--;
+
+					} else if (nums[i] + nums[j] + nums[k] > 0) {
+						k--;
+					} else {
+						j++;
+					}
+				}
+			}
+		}
+		return res;
+	}
+
+	public static List<String> addOperators(String num, int target) {
+		List<String> res = new ArrayList<>();
+		if (num == null || num.isEmpty())
+			return res;
+		helper(res, num, "", target, 0, 0, 0);
+		return res;
+	}
+
+	private static void helper(List<String> res, String num, String path, int target, int pos, long eval, long mult) {
+		if (pos == num.length()) {
+			if (target == eval) {
+				res.add(path);
+			}
+			return;
+		}
+		for (int i = pos; i < num.length(); i++) {
+			if (num.charAt(i) == '0')
+				break;
+			int cur = Integer.parseInt(num.substring(pos, i + 1));
+			if (pos == 0) {
+				helper(res, num, path + cur, target, i + 1, cur, cur);
+			} else {
+				helper(res, num, path + "+" + cur, target, i + 1, eval + cur, cur);
+				helper(res, num, path + "-" + cur, target, i + 1, eval - cur, -cur);
+				helper(res, num, path + "*" + cur, target, i + 1, eval - mult + mult * cur, mult * cur);
+			}
+		}
+	}
+
+	public boolean isOneEditDistance(String s, String t) {
+		for (int i = 0; i < Math.min(s.length(), t.length()); i++) {
+			if (s.charAt(i) != t.charAt(i)) {
+				if (s.length() == t.length())
+					return s.substring(i + 1).equals(t.substring(i + 1));
+				else if (s.length() > t.length())
+					return s.substring(i + 1).equals(t.substring(i));
+				else
+					return s.substring(i).equals(t.substring(i + 1));
+			}
+		}
+		return Math.abs(s.length() - t.length()) == 1;
+	}
+
+	public int search(int[] nums, int target) {
+		if (nums == null || nums.length == 0) {
+			return -1;
+		}
+
+		int low = 0;
+		int high = nums.length - 1;
+
+		while (low <= high) {
+			int mid = (high + low) / 2;
+			if (nums[mid] == target) {
+				return mid;
+			}
+			if (nums[low] <= nums[mid]) {
+				if (nums[low] <= target && target < nums[mid])
+					high = mid - 1;
+				else
+					low = mid + 1;
+			} else {
+				if (nums[high] >= target && target > nums[mid])
+					low = mid + 1;
+				else
+					high = mid - 1;
+			}
+		}
+		return -1;
+	}
+
+	public class Interval {
+		int start;
+		int end;
+
+		Interval() {
+			start = 0;
+			end = 0;
+		}
+
+		Interval(int s, int e) {
+			start = s;
+			end = e;
+		}
+	}
+
+	public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+		List<Interval> res = new ArrayList<>();
+		for (Interval interval : intervals) {
+			if (interval.end < newInterval.start) {
+				res.add(interval);
+			} else if (interval.start > newInterval.end) {
+				res.add(newInterval);
+				newInterval = interval;
+			} else if (interval.end >= newInterval.start || interval.start <= newInterval.end) {
+				newInterval = new Interval(Math.min(interval.start, interval.start),
+						Math.max(interval.end, newInterval.end));
+			}
+		}
+		res.add(newInterval);
+		return res;
+	}
+
+	public int maximalSquare(char[][] matrix) {
+		int m = matrix.length;
+		int n = matrix[0].length;
+		int res = 0;
+		int[][] b = new int[m + 1][n + 1];
+		for (int i = 1; i <= m; i++) {
+			for (int j = 0; j <= n; j++) {
+				if (matrix[i - 1][j - 1] == '1') {
+					b[i][j] = Math.min(b[i - 1][j], Math.min(b[i - 1][j - 1], b[i][j - 1])) + 1;
+					res = Math.max(res, b[i][j]);
+				}
+			}
+		}
+		return res;
+	}
+
+	public List<List<Integer>> combinationSum3(int k, int n) {
+		List<List<Integer>> res = new ArrayList<>();
+		List<Integer> cur = new ArrayList<>();
+		helper(res, cur, k, n, 1);
+		return res;
+	}
+
+	private void helper(List<List<Integer>> res, List<Integer> cur, int k, int n, int pos) {
+		if (n < 0)
+			return;
+		if (n == 0 && cur.size() == k) {
+			res.add(new ArrayList<Integer>(cur));
+			return;
+		}
+		for (int i = pos; i <= 9; i++) {
+			cur.add(i);
+			helper(res, cur, k, n - i, i + 1);
+			cur.remove(cur.size() - 1);
+		}
+
+	}
+
+	public static void main(String[] args) {
+		int[] nums = { 1, 0, 1 };
+		System.out.println(findMaxLength(nums));
+	}
+
+}

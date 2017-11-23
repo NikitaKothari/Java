@@ -119,19 +119,18 @@ public class LinkedListSol {
 	LinkedList<Integer> reverse(LinkedList<Integer> list) {
 		LinkedList<Integer> current = list;
 		LinkedList<Integer> next = null, prev = null;
-
 		while (current != null) {
 			next = current.next;
 			current.next = prev;
 			prev = current;
 			current = next;
 		}
-
 		return prev;
 	}
 
 	static LinkedList<Integer> head;
 
+	@SuppressWarnings("null")
 	LinkedList<Integer> reverseRec(LinkedList<Integer> current, LinkedList<Integer> prev) {
 		if (current == null) {
 			head = current;

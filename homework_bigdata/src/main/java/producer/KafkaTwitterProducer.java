@@ -60,7 +60,7 @@ public class KafkaTwitterProducer {
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(message.toString().substring(37, message.toString().length() - 2));
 			
 			try {
-				String coordinate = (String) jsonObject.get("place");
+				//String coordinate = (String) jsonObject.get("place");
 			} catch (Exception e) {
 				JSONObject jj = (JSONObject) jsonObject.get("place");
 				JSONObject jj1 = (JSONObject) jj.get("bounding_box");

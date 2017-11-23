@@ -12,6 +12,11 @@ public class Graph<E> {
 		state = State.unvisited;
 	}
 
+	/**
+	 * O(E+V)
+	 * 
+	 * @param graph
+	 */
 	public void depthFirstSearch(Graph<E> graph) {
 		if (graph == null)
 			return;
@@ -23,6 +28,11 @@ public class Graph<E> {
 		}
 	}
 
+	/**
+	 * O(E+V)
+	 * 
+	 * @param graph
+	 */
 	public void breathFirstSearch(Graph<E> graph) {
 		GenericQueue<Graph<E>> queue = new GenericQueue<>();
 		graph.state = State.visited;

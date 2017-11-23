@@ -1,6 +1,7 @@
 package leetcode.practice;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -53,6 +54,28 @@ public class Test {
 					return i;
 		}
 		return Integer.MIN_VALUE;
+	}
+
+	public static List<List<String>> create_workflow_stages(List<List<String>> precursor_steps) {
+
+		HashSet<String> isVisited = new HashSet<>();
+		LinkedList<String> queue = new LinkedList<>();
+
+		List<List<String>> res;
+
+		for (List<String> list : precursor_steps) {
+			boolean isFirstPriority = true;
+			for (List<String> list1 : precursor_steps) {
+				if (list1.indexOf(list.get(0)) != 1) {
+					isFirstPriority = false;
+					break;
+				}
+				if (isFirstPriority)
+					queue.add(list.get(0));
+			}
+		}
+
+		return null;
 	}
 
 }

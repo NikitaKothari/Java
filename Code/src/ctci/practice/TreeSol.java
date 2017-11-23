@@ -58,7 +58,7 @@ public class TreeSol {
 		return lists;
 	}
 
-	int checkHeight(TreeTemplate<Integer> root) {
+	public static int checkHeight(TreeTemplate<Integer> root) {
 		if (root == null)
 			return -1;
 		int leftHeight = checkHeight(root.left);
@@ -109,6 +109,22 @@ public class TreeSol {
 		return left != null ? left : right;
 	}
 
+	TreeTemplate<Integer> lowestCommonAncestor1(TreeTemplate<Integer> root, TreeTemplate<Integer> n1,
+			TreeTemplate<Integer> n2) {
+		if (root == null || n1 == null || n2 == null)
+			return null;
+		if (root == n1 || root == n2)
+			return root;
+
+		if (root.left.val > n1.val && root.right.val > n2.val)
+			return lowestCommonAncestor(root.left, n1, n2);
+
+		if (root.left.val < n1.val && root.right.val < n2.val)
+			return lowestCommonAncestor(root.right, n1, n2);
+
+		return null;
+	}
+
 	int countPathWithSum(TreeTemplate<Integer> root, int targetSum, int runningSum,
 			HashMap<Integer, Integer> pathCount) {
 		if (root == null)
@@ -132,6 +148,49 @@ public class TreeSol {
 			map.remove(key);
 		else
 			map.put(key, newCount);
+	}
+
+	public static <T extends Comparable<? super T>> int height(TreeTemplate<T> node, String path) {
+		if (node == null)
+			return 0;
+		path += "__" + node.val;
+		return (1 + Math.max(height(node.left, path), height(node.right, path)));
+	}
+
+	/**
+	 * add path also
+	 * 
+	 * @param root
+	 * @return
+	 */
+	public static <T extends Comparable<? super T>> int diameter(TreeTemplate<T> root, String path) {
+		if (root == null) {
+			return 0;
+		}
+
+		int lheight = height(root.left, path);
+		int rheight = height(root.right, path);
+
+		int ldiameter = diameter(root.left, path);
+		int rdiameter = diameter(root.right, path);
+
+		return Math.max(lheight + rheight + 1, Math.max(ldiameter, rdiameter));
+	}
+
+	public static void main(String args[]) {
+		TreeTemplate<Integer> tree = new TreeTemplate<Integer>(1);
+		tree.left = new TreeTemplate<Integer>(2);
+		tree.right = new TreeTemplate<Integer>(3);
+		tree.left.left = new TreeTemplate<Integer>(4);
+		tree.left.right = new TreeTemplate<Integer>(5);
+
+		TreeTemplate<String> tree1 = new TreeTemplate<String>("abc");
+		tree1.left = new TreeTemplate<String>("abc");
+		tree1.right = new TreeTemplate<String>("abc");
+		tree1.left.left = new TreeTemplate<String>("abc");
+		tree1.left.right = new TreeTemplate<String>("abc");
+
+		System.out.println("The diameter of given binary tree is : " + diameter(tree1, ""));
 	}
 
 }

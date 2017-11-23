@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;cs6301.g32.Rearrange.arrangeNums(...)&apos; to &apos;arrangeMinusPlus&apos;&#x0A;- Original project: &apos;SP4&apos;&#x0A;- Original element: &apos;cs6301.g32.Rearrange.arrangeNums(...)&apos;&#x0A;- Renamed element: &apos;cs6301.g32.Rearrange.arrangeMinusPlus(...)&apos;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;arrangeNums&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;cs6301.g32{Rearrange.java[Rearrange~arrangeNums~\[I~I~I~I" name="arrangeMinusPlus" references="true" stamp="1505845731778" version="1.0"/>
+</session>

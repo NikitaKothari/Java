@@ -1,0 +1,182 @@
+package lp7.cs6301.g32;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
+
+import cs6301.g00.Graph;
+import cs6301.g00.GraphAlgorithm;
+
+public class Flow extends GraphAlgorithm<Flow.FlowVertex> {
+	public static final int INFINITY = Integer.MAX_VALUE;
+	int min = 0;
+
+	// Class to store information about a vertex in this algorithm
+	static class FlowVertex extends Graph.Vertex {
+		boolean seen;
+		Graph.Vertex parent;
+		int distance; // distance of vertex from source
+		Graph.Edge parentEdge;
+
+		FlowVertex(Graph.Vertex u) {
+			super(u);
+			seen = false;
+			parent = null;
+			distance = INFINITY;
+			parentEdge = null;
+		}
+	}
+
+	Graph g;
+	Graph.Vertex s;
+	Graph.Vertex t;
+	HashMap<Graph.Edge, Integer> capacity;
+	HashMap<Graph.Edge, Integer> residualCapacity;
+
+	public Flow(Graph g, Graph.Vertex s, Graph.Vertex t, HashMap<Graph.Edge, Integer> capacity) {
+		super(g);
+		node = new FlowVertex[g.size()];
+		// Create array for storing vertex properties
+		// Add 0 reverse/residual capacity weights initially
+		residualCapacity = new HashMap<>();
+		for (Graph.Vertex u : g) {
+			node[u.getName()] = new FlowVertex(u);
+			for (Graph.Edge e : u.revAdj) {
+				residualCapacity.put(e, 0);
+			}
+		}
+		this.s = s;
+		this.t = t;
+		this.capacity = capacity;
+	}
+
+	// Return max flow found by Dinitz's algorithm
+	public int dinitzMaxFlow() {
+		int flow = 0;
+		while (true) {
+			flowInit();
+			List<Graph.Vertex> path = getPath(this.t);
+			System.out.println(path);
+			System.out.println(min);
+			if (path == null) {
+				break;
+			}
+			flow += min;
+			for (Graph.Vertex v : path) {
+				Graph.Edge e = getVertex(v).parentEdge;
+				if (e != null) {
+					capacity.put(e, capacity.get(e) - min);
+					residualCapacity.put(e, residualCapacity.get(e) + min);
+				}
+			}
+		}
+		return flow;
+	}
+
+	// Return max flow found by relabelToFront algorithm
+	public int relabelToFront() {
+		return 0;
+	}
+
+	// flow going through edge e
+	public int flow(Graph.Edge e) {
+		return 0;
+	}
+
+	// capacity of edge e
+	public int capacity(Graph.Edge e) {
+		return 0;
+	}
+
+	/*
+	 * After maxflow has been computed, this method can be called to get the
+	 * "S"-side of the min-cut found by the algorithm
+	 */
+	public Set<Graph.Vertex> minCutS() {
+		return null;
+	}
+
+	/*
+	 * After maxflow has been computed, this method can be called to get the
+	 * "T"-side of the min-cut found by the algorithm
+	 */
+	public Set<Graph.Vertex> minCutT() {
+		return null;
+	}
+
+	public List<Graph.Vertex> getPath(Graph.Vertex destination) {
+
+		Queue<Graph.Vertex> q = new LinkedList<>();
+		q.add(this.s);
+		while (!q.isEmpty()) {
+			Graph.Vertex u = q.remove();
+			for (Graph.Edge e : u) {
+				Graph.Vertex v = e.otherEnd(u);
+				if (!seen(v) && capacity.get(e) != 0) {
+					visit(u, v, e);
+					q.add(v);
+				}
+				if (v.equals(destination))
+					break;
+			}
+
+			for (Graph.Edge e : u.revAdj) {
+				Graph.Vertex v = e.otherEnd(u);
+				if (!seen(v) && residualCapacity.get(e) != 0) {
+					visit(u, v, e);
+					q.add(v);
+				}
+				if (v.equals(destination))
+					break;
+			}
+		}
+
+		List<Graph.Vertex> path = new ArrayList<>();
+
+		if (getParent(destination) == null)
+			return null;
+
+		while (true) {
+			path.add(destination);
+			FlowVertex flowVertex = getVertex(destination);
+			if (flowVertex.parent == null)
+				break;
+			min = Math.min(min, capacity.get(flowVertex.parentEdge));
+			destination = flowVertex.parent;
+		}
+		return path;
+	}
+
+	void flowInit() {
+		min = 0;
+		for (Graph.Vertex v : g) {
+			FlowVertex flowVertex = getVertex(v);
+			flowVertex.seen = false;
+			flowVertex.parent = null;
+			flowVertex.parentEdge = null;
+		}
+	}
+
+	boolean seen(Graph.Vertex u) {
+		return getVertex(u).seen;
+	}
+
+	Graph.Vertex getParent(Graph.Vertex u) {
+		return getVertex(u).parent;
+	}
+
+	int distance(Graph.Vertex u) {
+		return getVertex(u).distance;
+	}
+
+	// Visit a node v from u
+	void visit(Graph.Vertex u, Graph.Vertex v, Graph.Edge edge) {
+		FlowVertex flowVertex = getVertex(v);
+		flowVertex.seen = true;
+		flowVertex.parent = u;
+		flowVertex.parentEdge = edge;
+	}
+}

@@ -2,26 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="nums" key="selection"/>
+		<item value="matchingMat" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="arr"/>
-			<item value="512"/>
-			<item value="sentence_id"/>
-			<item value="process"/>
-			<item value="Process"/>
-			<item value="kafka"/>
-			<item value="json"/>
-			<item value="kaf"/>
+			<item value="matchingMat"/>
+			<item value="tree"/>
+			<item value="path"/>
+			<item value="capacity"/>
+			<item value="Capacity"/>
+			<item value="imgResult"/>
+			<item value="img1"/>
+			<item value="sift"/>
 		</list>
 		<list key="replacehistory">
-			<item value="nums"/>
-			<item value=""/>
-			<item value="Directory"/>
-			<item value="Directory1"/>
+			<item value="Long"/>
+			<item value="RewardCollection"/>
+			<item value="BellmanFordLimitVertex"/>
+			<item value="BellmanFordVertex"/>
+			<item value="[0]"/>
+			<item value="[i]"/>
+			<item value="&apos;"/>
+			<item value="DFSVertex"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

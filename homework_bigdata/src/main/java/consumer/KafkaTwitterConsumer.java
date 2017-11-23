@@ -29,6 +29,9 @@ public final class KafkaTwitterConsumer {
 				KafkaUtils.createStream(jssc, "127.0.0.1:2181", "my_consumer_group", topicMap);
 
 		JavaDStream<String> tweet_json = messages.map(new Function<Tuple2<String, String>, String>() {
+				
+			private static final long serialVersionUID = 1L;
+
 					@Override
 					public String call(Tuple2<String, String> tuple2) {
 						return tuple2._2();
